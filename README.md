@@ -45,3 +45,5 @@ Abaixo, segue os scripts SQL separados por tipo:
 
 ### Relatório Final
 O relatório final está disponível no arquivo [relatorio-final/template1.docx](relatorio/template1.docx).
+
+### Referências
