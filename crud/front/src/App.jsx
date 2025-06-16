@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import ClassList from './components/ClassList';
+import ClassForm from './components/ClassForm';
+import './styles/theme.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [classes, setClasses] = useState([]);
+
+  useEffect(() => {
+    // Simulando fetch
+    const data = [
+      { id: 1, modality: 'Musculação', instructor: 'Robson', duration: '1:00' },
+      { id: 2, modality: 'Aeróbico', instructor: 'Carlos', duration: '0:30' },
+      // adicione mais para testar o scroll
+    ];
+    setClasses(data);
+  }, []);
+
+  const handleAddClass = (newClass) => {
+    setClasses((prev) => [...prev, { id: prev.length + 1, ...newClass }]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="main-container">
+      <div className="table-container">
+        <ClassList classes={classes} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="form-container">
+        <ClassForm onAdd={handleAddClass} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
