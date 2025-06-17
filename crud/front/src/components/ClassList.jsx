@@ -1,4 +1,4 @@
-function ClassList({ classes }) {
+export default function ClassList({ classes }) {
   return (
     <div>
       <div className="table-header">
