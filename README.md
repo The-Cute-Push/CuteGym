@@ -1,13 +1,13 @@
 # CuteGym - GRUPO B
 Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema de gerenciamento de assinaturas de academias, o CuteGym.
-A parte visual do projeto foi programada em Python (usando a biblioteca CustomTkinter) criando um CRUD para os cadastros necessários, onde a aplicação faz conexão com o banco de dados através de uma API em Java, e realiza operações de adição, aualização e deleção dos dados, usando conceitos e dinâmicas práticas de SQL Server desenvolvidas em aula.
+A parte visual do projeto foi programada em React criando um CRUD para os cadastros necessários, onde a aplicação faz conexão com o banco de dados através de uma API em Java, e realiza operações de adição, aualização e deleção dos dados, usando conceitos e dinâmicas práticas de SQL Server desenvolvidas em aula.
 
 ### Integrantes
 Vitor Muneretto Tinelli - VitorTinelli<br>
 Gabriel Mensor da Rosa - GabrielMensor<br>
 Lucas De Bitencourt Frasson - herudegan<br>
 Brendon Córdova Silveira - Lightkiin<br>
-Rafael Garcia de Rocchi - conta github<br>
+Rafael Garcia de Rocchi - rafaelgarciaderocchi<br>
 Vinícius dos Santos Nascimento - ViniciusDSN<br>
 ...
 
