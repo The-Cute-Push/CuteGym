@@ -33,15 +33,8 @@ Abaixo, segue os scripts SQL separados por tipo:
 + [DML](scripts/dml)
 
 ### Código Fonte do CRUD
-- Linguagem de Programação Java<br>
-- Linguagem de Programação Python<br>
-- Biblioteca CustomTkinter
-- Projeto Windows Forms
-- Linguagem SQL Server
-
-### Passos para execução do CRUD
-
-[Codigo Fonte](crud/)
+- VITE/REACT
+- AXIOS (NODEJS)
 
 ### Relatório Final
 O relatório final está disponível no arquivo [relatorio-final/template1.docx](relatorio/template1.docx).
