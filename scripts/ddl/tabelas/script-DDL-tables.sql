@@ -1,9 +1,9 @@
 IF OBJECT_ID('address', 'U') IS NULL
 CREATE TABLE [address] (
-  [id_address] INT PRIMARY KEY IDENTITY(1,1) CHECK ([id_address] > 0),
+  [id_address] MEDIUMINT PRIMARY KEY IDENTITY(1,1) CHECK ([id_address] > 0),
   [street] VARCHAR(200) NOT NULL,
   [location] VARCHAR(200) NOT NULL,
-  [number] INT CHECK ([number] >= 0),
+  [number] MEDIUMINT CHECK ([number] >= 0),
   [reference] VARCHAR(200),
   [city] VARCHAR(100) NOT NULL,
   [state] VARCHAR(100) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE [address] (
 
 IF OBJECT_ID('phone', 'U') IS NULL
 CREATE TABLE [phone] (
-  [id_phone] INT PRIMARY KEY IDENTITY(1,1) CHECK ([id_phone] > 0),
+  [id_phone] MEDIUMINT PRIMARY KEY IDENTITY(1,1) CHECK ([id_phone] > 0),
   [nr_phone] VARCHAR(15) NOT NULL
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE [users] (
   [dt_creation] DATETIME NOT NULL,
   [dt_birth] DATE NOT NULL,
   [specialty] VARCHAR(50),
-  [phone] INT NOT NULL CHECK ([phone] > 0),
+  [id_phone] INT NOT NULL CHECK ([phone] > 0),
   [id_address] INT NOT NULL CHECK ([id_address] > 0),
   [id_user_type] TINYINT NOT NULL CHECK ([id_user_type] > 0),
   CONSTRAINT FK_Users_Phone FOREIGN KEY ([phone]) REFERENCES [phone] ([id_phone]),
@@ -50,7 +50,7 @@ CREATE TABLE [modalities] (
 
 IF OBJECT_ID('instructor_modalities', 'U') IS NULL
 CREATE TABLE [instructor_modalities] (
-  [id_instructor] INT NOT NULL CHECK ([id_instructor] > 0),
+  [id_instructor] SMALLINT NOT NULL CHECK ([id_instructor] > 0),
   [id_modalities] TINYINT NOT NULL CHECK ([id_modalities] > 0),
   PRIMARY KEY (id_instructor, id_modalities),
   CONSTRAINT FK_InstructorModalities_Users FOREIGN KEY ([id_instructor]) REFERENCES [users] ([id_user]),
