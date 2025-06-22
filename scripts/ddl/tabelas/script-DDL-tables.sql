@@ -50,7 +50,7 @@ CREATE TABLE [modalities] (
 
 IF OBJECT_ID('instructor_modalities', 'U') IS NULL
 CREATE TABLE [instructor_modalities] (
-  [id_instructor] SMALLINT NOT NULL CHECK ([id_instructor] > 0),
+  [id_instructor] INT NOT NULL CHECK ([id_instructor] > 0),
   [id_modalities] TINYINT NOT NULL CHECK ([id_modalities] > 0),
   PRIMARY KEY (id_instructor, id_modalities),
   CONSTRAINT FK_InstructorModalities_Users FOREIGN KEY ([id_instructor]) REFERENCES [users] ([id_user]),
