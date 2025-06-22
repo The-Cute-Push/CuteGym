@@ -1,24 +1,23 @@
-# Logs
-logs
+# node_modules e dependências
+node_modules/
+**/node_modules/
+
+# arquivos sensíveis
+.env
+
+# logs e cache
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+.vite/
+dist/
+build/
+coverage/
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# editor e sistema
+.vscode/
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# SQL Server local
+*.mdf
+*.ldf
