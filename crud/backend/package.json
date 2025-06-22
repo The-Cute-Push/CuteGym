@@ -1,0 +1,17 @@
+{
+  "name": "cutegym-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "msnodesqlv8": "^4.5.0",
+    "mssql": "^10.0.4"
+  },
+  "devDependencies": {
+    "@types/mssql": "^9.1.7"
+  }
+}
