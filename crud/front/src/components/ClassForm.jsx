@@ -29,7 +29,8 @@ function ClassForm({ onAdd }) {
         onChange={(e) => setInstructor(e.target.value)}
       />
       <input
-        type="text"
+        type="number"
+        min="1"                         
         placeholder="Digite as horas"
         value={duration}
         onChange={(e) => setDuration(e.target.value)}
