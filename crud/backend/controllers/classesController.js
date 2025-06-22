@@ -1,5 +1,6 @@
 const { sql } = require('../db');
 
+// 🎓 Classes
 async function getAllClasses(req, res) {
   try {
     const result = await sql.query(`
@@ -31,7 +32,34 @@ async function createClass(req, res) {
   }
 }
 
+// 🏋️ Modalidades
+async function getAllModalities(req, res) {
+  try {
+    const result = await sql.query(`SELECT id_modalities AS id, name FROM modalities`);
+    res.json(result.recordset);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+}
+
+// Instrutores
+async function getAllInstructors(req, res) {
+  try {
+    const result = await sql.query(`
+      SELECT id_user AS id, nm_user AS name
+      FROM users
+      WHERE id_user_type = 2
+    `);
+    res.json(result.recordset);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+}
+
+
 module.exports = {
   getAllClasses,
-  createClass
+  createClass,
+  getAllModalities,
+  getAllInstructors
 };

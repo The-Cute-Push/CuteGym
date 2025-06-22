@@ -1,9 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function ClassForm({ onAdd }) {
   const [id_modalities, setIdModalities] = useState('');
   const [id_instructor, setIdInstructor] = useState('');
   const [dt_hour_class, setDtHourClass] = useState('');
+
+  const [modalities, setModalities] = useState([]);
+  const [instructors, setInstructors] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const modRes = await axios.get('http://localhost:3001/classes/modalities');
+        const instRes = await axios.get('http://localhost:3001/classes/instructors');        
+        setModalities(modRes.data);
+        setInstructors(instRes.data);
+      } catch (err) {
+        console.error('Erro ao buscar modalidades/instrutores', err);
+      }
+    }
+    fetchData();
+  }, []);
 
   const handleSubmit = () => {
     if (id_modalities && id_instructor && dt_hour_class) {
@@ -16,24 +34,27 @@ function ClassForm({ onAdd }) {
 
   return (
     <div className="form-box">
-      <input
-        type="number"
-        placeholder="ID da modalidade"
-        value={id_modalities}
-        onChange={(e) => setIdModalities(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="ID do instrutor"
-        value={id_instructor}
-        onChange={(e) => setIdInstructor(e.target.value)}
-      />
+      <select value={id_modalities} onChange={(e) => setIdModalities(e.target.value)}>
+        <option value="">Selecione a modalidade</option>
+        {modalities.map((mod) => (
+          <option key={mod.id} value={mod.id}>{mod.name}</option>
+        ))}
+      </select>
+
+      <select value={id_instructor} onChange={(e) => setIdInstructor(e.target.value)}>
+        <option value="">Selecione o instrutor</option>
+        {instructors.map((inst) => (
+          <option key={inst.id} value={inst.id}>{inst.name}</option>
+        ))}
+      </select>
+
       <input
         type="datetime-local"
         placeholder="Data e Hora da Aula"
         value={dt_hour_class}
         onChange={(e) => setDtHourClass(e.target.value)}
       />
+
       <button onClick={handleSubmit}>Cadastrar</button>
     </div>
   );
@@ -55,7 +76,6 @@ export default function ClassList({ classes, onAdd }) {
 
       <ClassForm onAdd={onAdd} />
 
-      {/* Cabeçalho da tabela */}
       <div className="table-header">
         <div className="cell">ID</div>
         <div className="cell">Modalidade</div>
