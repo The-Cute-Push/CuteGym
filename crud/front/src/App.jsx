@@ -3,17 +3,18 @@ import ClassList from './components/ClassList';
 import './App.css';
 import axios from 'axios';
 
+const API_URL = 'http://localhost:3002';
+
 function App() {
   const [classes, setClasses] = useState([]);
 
   const fetchClasses = async () => {
-    const res = await axios.get('http://localhost:3001/classes');
+    const res = await axios.get(`${API_URL}/classes`);
     setClasses(res.data);
   };
 
-  const addClass = async (newClass) => {
-    await axios.post('http://localhost:3001/classes', newClass);
-    fetchClasses();
+  const addClass = async () => {
+    await fetchClasses();
   };
 
   useEffect(() => {

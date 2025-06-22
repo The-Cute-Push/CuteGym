@@ -15,22 +15,33 @@ async function getAllClasses(req, res) {
     `);
     res.json(result.recordset);
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send('Erro ao buscar aulas: ' + err.message);
   }
 }
 
 async function createClass(req, res) {
   const { id_modalities, id_instructor, dt_hour_class } = req.body;
+
+  const jsDate = new Date(dt_hour_class);
+  const pad = (n) => n.toString().padStart(2, '0');
+  const formattedDate = 
+    `${jsDate.getFullYear()}${pad(jsDate.getMonth() + 1)}${pad(jsDate.getDate())} ` +
+    `${pad(jsDate.getHours())}:${pad(jsDate.getMinutes())}:${pad(jsDate.getSeconds())}`;
+
+  console.log('🕒 Data para SQL Server:', formattedDate);
+
   try {
     await sql.query`
       INSERT INTO classes (id_modalities, id_instructor, dt_hour_class)
-      VALUES (${id_modalities}, ${id_instructor}, ${dt_hour_class})
+      VALUES (${id_modalities}, ${id_instructor}, ${formattedDate})
     `;
     res.status(201).send('Aula cadastrada com sucesso!');
   } catch (err) {
-    res.status(500).send(err.message);
+    console.error('❌ Erro ao cadastrar aula:', err);
+    res.status(500).send('Erro ao cadastrar aula: ' + err.message);
   }
 }
+
 
 // 🏋️ Modalidades
 async function getAllModalities(req, res) {
@@ -38,11 +49,11 @@ async function getAllModalities(req, res) {
     const result = await sql.query(`SELECT id_modalities AS id, name FROM modalities`);
     res.json(result.recordset);
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send('Erro ao buscar modalidades: ' + err.message);
   }
 }
 
-// Instrutores
+// 👨‍🏫 Instrutores
 async function getAllInstructors(req, res) {
   try {
     const result = await sql.query(`
@@ -52,10 +63,9 @@ async function getAllInstructors(req, res) {
     `);
     res.json(result.recordset);
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send('Erro ao buscar instrutores: ' + err.message);
   }
 }
-
 
 module.exports = {
   getAllClasses,
