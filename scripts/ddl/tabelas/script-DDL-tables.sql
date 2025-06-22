@@ -33,10 +33,10 @@ CREATE TABLE [users] (
   [dt_creation] DATETIME NOT NULL,
   [dt_birth] DATE NOT NULL,
   [specialty] VARCHAR(50),
-  [id_phone] INT NOT NULL CHECK ([phone] > 0),
-  [id_address] INT NOT NULL CHECK ([id_address] > 0),
+  [id_phone] MEDIUMINT NOT NULL CHECK ([id_phone] > 0),
+  [id_address] MEDIUMINT NOT NULL CHECK ([id_address] > 0),
   [id_user_type] TINYINT NOT NULL CHECK ([id_user_type] > 0),
-  CONSTRAINT FK_Users_Phone FOREIGN KEY ([phone]) REFERENCES [phone] ([id_phone]),
+  CONSTRAINT FK_Users_Phone FOREIGN KEY ([id_phone]) REFERENCES [phone] ([id_phone]),
   CONSTRAINT FK_Users_Address FOREIGN KEY ([id_address]) REFERENCES [address] ([id_address]),
   CONSTRAINT FK_Users_UserTypes FOREIGN KEY ([id_user_type]) REFERENCES [user_types] ([id_user_type])
 );
