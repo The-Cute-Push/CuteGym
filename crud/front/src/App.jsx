@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import ClassList from './components/ClassList';
 import './App.css';
 import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
 
 const API_URL = 'http://localhost:3002';
 
@@ -25,6 +26,7 @@ function App() {
     <div className="main-container">
       <h1>Cadastro de Aulas</h1>
       <ClassList classes={classes} onAdd={addClass} />
+      <ToastContainer />
     </div>
   );
 }

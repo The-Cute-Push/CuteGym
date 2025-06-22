@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const API_URL = 'http://localhost:3002';
 
@@ -25,28 +26,31 @@ function ClassForm({ onAdd }) {
     fetchOptions();
   }, []);
 
-  const handleSubmit = async () => {
-    console.log('Clique detectado');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (id_modalities && id_instructor && dt_hour_class) {
-      console.log('Enviando dados:', { id_modalities, id_instructor, dt_hour_class });
-      await axios.post(`${API_URL}/classes`, {
-        id_modalities,
-        id_instructor,
-        dt_hour_class
-      });
-      onAdd();
-      setIdModalities(null);
-      setIdInstructor(null);
-      setDtHourClass('');
+      try {
+        await axios.post(`${API_URL}/classes`, {
+          id_modalities,
+          id_instructor,
+          dt_hour_class
+        });
+        setIdModalities(null);
+        setIdInstructor(null);
+        setDtHourClass('');
+        await onAdd(); 
+      } catch {
+        toast.error('Erro ao criar a classe!');
+      }
     } else {
-      console.warn('Preencha todos os campos');
+      toast.warn('Preencha todos os campos');
     }
   };
 
   return (
-    <div className="form-box">
-      <select 
-        value={id_modalities ?? ''} 
+    <form className="form-box" onSubmit={handleSubmit}>
+      <select
+        value={id_modalities ?? ''}
         onChange={(e) => setIdModalities(Number(e.target.value))}
       >
         <option value="">Selecione a modalidade</option>
@@ -55,8 +59,8 @@ function ClassForm({ onAdd }) {
         ))}
       </select>
 
-      <select 
-        value={id_instructor ?? ''} 
+      <select
+        value={id_instructor ?? ''}
         onChange={(e) => setIdInstructor(Number(e.target.value))}
       >
         <option value="">Selecione o instrutor</option>
@@ -72,8 +76,10 @@ function ClassForm({ onAdd }) {
         onChange={(e) => setDtHourClass(e.target.value)}
       />
 
-      <button onClick={handleSubmit} style={{ zIndex: 10 }}>Cadastrar</button>
-    </div>
+      <button type="submit" style={{ zIndex: 10 }}>
+        Cadastrar
+      </button>
+    </form>
   );
 }
 
