@@ -37,7 +37,7 @@ VALUES
 ('Technician', 'Maintains gym equipment'),
 ('Marketing', 'Handles promotional tasks');
 
-INSERT INTO [users] ([nm_user], [email], [password_hash], [active], [dt_creation], [dt_birth], [specialty], [phone], [id_address], [id_user_type])
+INSERT INTO [users] ([nm_user], [email], [password_hash], [active], [dt_creation], [dt_birth], [specialty], [id_phone], [id_address], [id_user_type])
 VALUES 
 ('John Doe', 'john.doe@example.com', 'hash1', 1, '2023-01-01', '1990-01-01', 'Yoga', 1, 1, 2),
 ('Jane Smith', 'jane.smith@example.com', 'hash2', 1, '2023-01-02', '1985-02-02', 'Pilates', 2, 2, 2),
