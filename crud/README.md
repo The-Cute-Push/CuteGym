@@ -1,11 +1,11 @@
 # 🏋️‍♂️ CUTEGYM — Projeto Fullstack com React, Node.js e SQL Server
 
-Este é um projeto fullstack de cadastro de aulas de academia, utilizando:
+Este é um projeto fullstack para cadastro e visualização de **aulas de academia**, utilizando:
 
 - **Frontend**: React com Vite
 - **Backend**: Node.js com Express
-- **Banco de dados**: SQL Server (usando o driver `msnodesqlv8`)
-- **Banco de teste**: `DB_teste`
+- **Banco de Dados**: SQL Server (via driver `msnodesqlv8`)
+- **Banco de teste utilizado**: `DB_teste`
 
 ---
 
@@ -22,6 +22,7 @@ Este é um projeto fullstack de cadastro de aulas de academia, utilizando:
 ├── front/          # Aplicação React com Vite
 │   ├── src/
 │   ├── App.jsx
+│   ├── components/
 │   └── package.json
 └── README.md
 ```
@@ -30,18 +31,20 @@ Este é um projeto fullstack de cadastro de aulas de academia, utilizando:
 
 ## 🧱 Banco de Dados
 
-O projeto utiliza um banco de teste chamado `DB_teste`. A tabela usada é:
+O projeto utiliza a tabela relacional `classes`, que se conecta às tabelas `users` (instrutores) e `modalities` por meio de **chaves estrangeiras**:
 
 ```sql
-CREATE TABLE Classes (
-  id INT IDENTITY(1,1) PRIMARY KEY,
-  modality NVARCHAR(100),
-  instructor NVARCHAR(100),
-  duration NVARCHAR(50)
+CREATE TABLE [classes] (
+  [id_class] INT PRIMARY KEY IDENTITY(1,1) CHECK ([id_class] > 0),
+  [id_modalities] TINYINT NOT NULL CHECK ([id_modalities] > 0),
+  [id_instructor] INT NOT NULL CHECK ([id_instructor] > 0),
+  [dt_hour_class] DATETIME NOT NULL,
+  CONSTRAINT FK_Classes_Modalities FOREIGN KEY ([id_modalities]) REFERENCES [modalities] ([id_modalities]),
+  CONSTRAINT FK_Classes_Instructor FOREIGN KEY ([id_instructor]) REFERENCES [users] ([id_user])
 );
 ```
 
-Certifique-se de que o SQL Server esteja **executando localmente** e que o nome da instância no `db.js` esteja correto (exemplo: `WIN-GG66KL1BPKP\SQL2017`).
+Além disso, o banco `DB_teste` já possui tabelas auxiliares como `modalities`, `users`, `address`, `phone`, `user_types`, entre outras.
 
 ---
 
@@ -50,50 +53,63 @@ Certifique-se de que o SQL Server esteja **executando localmente** e que o nome 
 ### 🔧 Backend (API)
 
 1. Navegue até a pasta `backend`:
+
    ```bash
    cd backend
    ```
 
 2. Instale as dependências:
+
    ```bash
    npm install
    ```
 
 3. Inicie a API:
+
    ```bash
    npm start
    ```
 
-A API rodará em: [http://localhost:3001](http://localhost:3001)
+A API estará disponível em: [http://localhost:3001](http://localhost:3001)
 
 ---
 
 ### 💻 Frontend (React + Vite)
 
-1. Navegue até a pasta `front`:
+1. Acesse a pasta `front`:
+
    ```bash
    cd front
    ```
 
 2. Instale as dependências:
+
    ```bash
    npm install
    ```
 
-3. Inicie o servidor de desenvolvimento:
+3. Execute o servidor de desenvolvimento:
+
    ```bash
    npm run dev
    ```
 
-A aplicação React abrirá normalmente no navegador (geralmente em [http://localhost:5173](http://localhost:5173)).
+Abra no navegador: [http://localhost:5173](http://localhost:5173)
 
 ---
 
 ## 📌 Observações
 
-- O backend conecta ao banco SQL Server usando autenticação Windows (`trustedConnection: true`).
-- Verifique se o servidor SQL está aceitando conexões locais via `msnodesqlv8`.
-- Caso use `.env` para configurações, **não esqueça de adicioná-lo ao `.gitignore`**.
+- O backend usa **autenticação Windows** com `trustedConnection: true`.
+- O driver utilizado é `msnodesqlv8`, portanto o **SQL Server deve estar local e com o nome da instância correto**.
+- A tabela `classes` foi atualizada para trabalhar com **id_modalities**, **id_instructor** e **dt_hour_class**, que são ligados a entidades reais do banco.
+- A interface web permite **cadastro de aulas via formulário**, e exibe os dados com paginação.
+
+---
+
+## 🎨 Estilo
+
+O front utiliza **CSS moderno com tema escuro** (Dark Theme), responsivo para telas menores e com efeitos de hover e destaque para melhor UX.
 
 ---
 
@@ -101,11 +117,11 @@ A aplicação React abrirá normalmente no navegador (geralmente em [http://loca
 
 - Node.js
 - Express
-- MSSQL (`msnodesqlv8`)
-- React
-- Vite
+- React + Vite
 - Axios
-- CSS moderno com modo escuro (Dark Theme)
+- SQL Server (T-SQL)
+- msnodesqlv8
+- CSS puro com estilo escuro
 
 ---
 
