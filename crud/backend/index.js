@@ -15,7 +15,10 @@ connectDB();
 app.use('/classes', classRoutes);
 
 // Iniciar servidor
-const PORT = 3001;
+const PORT = process.env.PORT || 3002;
+
 app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
   console.log(`🚀 API rodando em http://localhost:${PORT}`);
 });
+
