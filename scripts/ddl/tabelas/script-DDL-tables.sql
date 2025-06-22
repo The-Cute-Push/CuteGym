@@ -70,6 +70,7 @@ IF OBJECT_ID('plan_modalities', 'U') IS NULL
 CREATE TABLE [plan_modalities] (
   [id_plan] TINYINT NOT NULL CHECK ([id_plan] > 0),
   [id_modalities] TINYINT NOT NULL CHECK ([id_modalities] > 0),
+  PRIMARY KEY (id_plan, id_modalities),
   CONSTRAINT FK_PlanModalities_Plans FOREIGN KEY ([id_plan]) REFERENCES [plans] ([id_plan]),
   CONSTRAINT FK_PlanModalities_Modalities FOREIGN KEY ([id_modalities]) REFERENCES [modalities] ([id_modalities])
 );
