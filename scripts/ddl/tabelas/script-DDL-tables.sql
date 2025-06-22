@@ -33,10 +33,10 @@ CREATE TABLE [users] (
   [dt_creation] DATETIME NOT NULL,
   [dt_birth] DATE NOT NULL,
   [specialty] VARCHAR(50),
-  [phone] INT NOT NULL CHECK ([phone] > 0),
+  [id_phone] INT NOT NULL CHECK ([id_phone] > 0),
   [id_address] INT NOT NULL CHECK ([id_address] > 0),
   [id_user_type] TINYINT NOT NULL CHECK ([id_user_type] > 0),
-  CONSTRAINT FK_Users_Phone FOREIGN KEY ([phone]) REFERENCES [phone] ([id_phone]),
+  CONSTRAINT FK_Users_Phone FOREIGN KEY ([id_phone]) REFERENCES [phone] ([id_phone]),
   CONSTRAINT FK_Users_Address FOREIGN KEY ([id_address]) REFERENCES [address] ([id_address]),
   CONSTRAINT FK_Users_UserTypes FOREIGN KEY ([id_user_type]) REFERENCES [user_types] ([id_user_type])
 );
@@ -70,6 +70,7 @@ IF OBJECT_ID('plan_modalities', 'U') IS NULL
 CREATE TABLE [plan_modalities] (
   [id_plan] TINYINT NOT NULL CHECK ([id_plan] > 0),
   [id_modalities] TINYINT NOT NULL CHECK ([id_modalities] > 0),
+  PRIMARY KEY (id_plan, id_modalities),
   CONSTRAINT FK_PlanModalities_Plans FOREIGN KEY ([id_plan]) REFERENCES [plans] ([id_plan]),
   CONSTRAINT FK_PlanModalities_Modalities FOREIGN KEY ([id_modalities]) REFERENCES [modalities] ([id_modalities])
 );
