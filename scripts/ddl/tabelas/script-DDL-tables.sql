@@ -82,6 +82,7 @@ CREATE TABLE [subscriptions] (
   [id_user] INT NOT NULL CHECK ([id_user] > 0),
   [active] BIT NOT NULL,
   [dt_start] DATE NOT NULL,
+  [dt_end] DATE NULL,
   CONSTRAINT FK_Subscriptions_Plans FOREIGN KEY ([id_plan]) REFERENCES [plans] ([id_plan]),
   CONSTRAINT FK_Subscriptions_Users FOREIGN KEY ([id_user]) REFERENCES [users] ([id_user])
 );
