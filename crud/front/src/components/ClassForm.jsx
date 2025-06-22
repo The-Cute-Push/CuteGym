@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'; 
 import axios from 'axios';
 
+const API_URL = 'http://localhost:3002';
+
 function ClassForm({ onAdd }) {
-  // Agora iniciamos como null (valor numérico)
   const [id_modalities, setIdModalities] = useState(null);
   const [id_instructor, setIdInstructor] = useState(null);
   const [dt_hour_class, setDtHourClass] = useState('');
@@ -13,8 +14,8 @@ function ClassForm({ onAdd }) {
   useEffect(() => {
     async function fetchOptions() {
       try {
-        const modRes = await axios.get('http://localhost:3001/classes/modalities');
-        const instRes = await axios.get('http://localhost:3001/classes/instructors');
+        const modRes = await axios.get(`${API_URL}/classes/modalities`);
+        const instRes = await axios.get(`${API_URL}/classes/instructors`);
         setModalities(modRes.data);
         setInstructors(instRes.data);
       } catch (error) {
@@ -24,12 +25,21 @@ function ClassForm({ onAdd }) {
     fetchOptions();
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    console.log('Clique detectado');
     if (id_modalities && id_instructor && dt_hour_class) {
-      onAdd({ id_modalities, id_instructor, dt_hour_class });
+      console.log('Enviando dados:', { id_modalities, id_instructor, dt_hour_class });
+      await axios.post(`${API_URL}/classes`, {
+        id_modalities,
+        id_instructor,
+        dt_hour_class
+      });
+      onAdd();
       setIdModalities(null);
       setIdInstructor(null);
       setDtHourClass('');
+    } else {
+      console.warn('Preencha todos os campos');
     }
   };
 
@@ -62,7 +72,7 @@ function ClassForm({ onAdd }) {
         onChange={(e) => setDtHourClass(e.target.value)}
       />
 
-      <button onClick={handleSubmit}>Cadastrar</button>
+      <button onClick={handleSubmit} style={{ zIndex: 10 }}>Cadastrar</button>
     </div>
   );
 }

@@ -13,12 +13,12 @@ Vinícius dos Santos Nascimento - ViniciusDSN<br>
 
 ### Modelo Físico
 Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.io/) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.<br>
-<!--Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/).<br> -->
+<!--Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/68477a47579a5a75f79526ab).<br> -->
 
 ![image]()
   
 ### Dicionário de Dados
-As informações sobre as tabelas e índices foram documentados na planilha [template1.xlsx](dicionario_dados/template1.xlsx).
+As informações sobre as tabelas e índices foram documentados na planilha [dicionario_de_dados_cutegym.xlsx](dicionario_dados/dicionario_de_dados_cutegym.xlsx)
 
 ### Scripts SQL
 Para este projeto foi utilizado o banco de dados [Azure SQL](https://azure.microsoft.com/pt-br/products/azure-sql/database) <br>
@@ -33,17 +33,11 @@ Abaixo, segue os scripts SQL separados por tipo:
 + [DML](scripts/dml)
 
 ### Código Fonte do CRUD
-- Linguagem de Programação Java<br>
-- Linguagem de Programação Python<br>
-- Biblioteca CustomTkinter
-- Projeto Windows Forms
-- Linguagem SQL Server
-
-### Passos para execução do CRUD
-
-[Codigo Fonte](crud/)
+- VITE/REACT
+- AXIOS (NODEJS)
 
 ### Relatório Final
 O relatório final está disponível no arquivo [relatorio-final/template1.docx](relatorio/template1.docx).
 
 ### Referências
+https://www.w3schools.com/sql/sql_datatypes.asp
