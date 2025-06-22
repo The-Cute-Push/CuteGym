@@ -40,3 +40,4 @@ Abaixo, segue os scripts SQL separados por tipo:
 O relatório final está disponível no arquivo [relatorio-final/template1.docx](relatorio/template1.docx).
 
 ### Referências
+https://www.w3schools.com/sql/sql_datatypes.asp
