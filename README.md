@@ -18,7 +18,7 @@ Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.i
 ![image]()
   
 ### Dicionário de Dados
-As informações sobre as tabelas e índices foram documentados na planilha [template1.xlsx](dicionario_dados/template1.xlsx).
+As informações sobre as tabelas e índices foram documentados na planilha [dicionario_de_dados_cutegym.xlsx](dicionario_dados/dicionario_de_dados_cutegym.xlsx)
 
 ### Scripts SQL
 Para este projeto foi utilizado o banco de dados [Azure SQL](https://azure.microsoft.com/pt-br/products/azure-sql/database) <br>
