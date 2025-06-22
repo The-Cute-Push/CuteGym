@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import ClassForm from './components/ClassForm';
 import ClassList from './components/ClassList';
 import './App.css';
 import axios from 'axios';
@@ -24,8 +23,7 @@ function App() {
   return (
     <div className="main-container">
       <h1>Cadastro de Aulas</h1>
-      <ClassForm onAdd={addClass} />
-      <ClassList classes={classes} />
+      <ClassList classes={classes} onAdd={addClass} />
     </div>
   );
 }

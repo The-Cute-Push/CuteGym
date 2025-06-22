@@ -1,24 +1,31 @@
-
 const { sql } = require('../db');
 
-// Buscar todas as aulas
 async function getAllClasses(req, res) {
   try {
-    const result = await sql.query('SELECT * FROM Classes');
+    const result = await sql.query(`
+      SELECT 
+        c.id_class AS id,
+        m.name AS modality,
+        u.nm_user AS instructor,
+        FORMAT(c.dt_hour_class, 'yyyy-MM-dd HH:mm') AS datetime
+      FROM classes c
+      INNER JOIN modalities m ON c.id_modalities = m.id_modalities
+      INNER JOIN users u ON c.id_instructor = u.id_user
+    `);
     res.json(result.recordset);
   } catch (err) {
     res.status(500).send(err.message);
   }
 }
 
-// Cadastrar nova aula
 async function createClass(req, res) {
-  const { modality, instructor, duration } = req.body;
+  const { id_modalities, id_instructor, dt_hour_class } = req.body;
   try {
     await sql.query`
-      INSERT INTO Classes (modality, instructor, duration)
-      VALUES (${modality}, ${instructor}, ${duration})`;
-    res.status(201).send('Aula cadastrada!');
+      INSERT INTO classes (id_modalities, id_instructor, dt_hour_class)
+      VALUES (${id_modalities}, ${id_instructor}, ${dt_hour_class})
+    `;
+    res.status(201).send('Aula cadastrada com sucesso!');
   } catch (err) {
     res.status(500).send(err.message);
   }

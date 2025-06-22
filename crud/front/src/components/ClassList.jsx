@@ -1,6 +1,45 @@
 import { useState } from 'react';
 
-export default function ClassList({ classes }) {
+function ClassForm({ onAdd }) {
+  const [id_modalities, setIdModalities] = useState('');
+  const [id_instructor, setIdInstructor] = useState('');
+  const [dt_hour_class, setDtHourClass] = useState('');
+
+  const handleSubmit = () => {
+    if (id_modalities && id_instructor && dt_hour_class) {
+      onAdd({ id_modalities, id_instructor, dt_hour_class });
+      setIdModalities('');
+      setIdInstructor('');
+      setDtHourClass('');
+    }
+  };
+
+  return (
+    <div className="form-box">
+      <input
+        type="number"
+        placeholder="ID da modalidade"
+        value={id_modalities}
+        onChange={(e) => setIdModalities(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="ID do instrutor"
+        value={id_instructor}
+        onChange={(e) => setIdInstructor(e.target.value)}
+      />
+      <input
+        type="datetime-local"
+        placeholder="Data e Hora da Aula"
+        value={dt_hour_class}
+        onChange={(e) => setDtHourClass(e.target.value)}
+      />
+      <button onClick={handleSubmit}>Cadastrar</button>
+    </div>
+  );
+}
+
+export default function ClassList({ classes, onAdd }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -12,11 +51,16 @@ export default function ClassList({ classes }) {
 
   return (
     <div className="table-container">
+      <h2>Lista de Aulas</h2>
+
+      <ClassForm onAdd={onAdd} />
+
+      {/* Cabeçalho da tabela */}
       <div className="table-header">
         <div className="cell">ID</div>
         <div className="cell">Modalidade</div>
         <div className="cell">Instrutor</div>
-        <div className="cell">Duração</div>
+        <div className="cell">Data/Hora</div>
       </div>
 
       <div className="table-body">
@@ -25,7 +69,7 @@ export default function ClassList({ classes }) {
             <div className="cell">{cls.id}</div>
             <div className="cell">{cls.modality}</div>
             <div className="cell">{cls.instructor}</div>
-            <div className="cell">{cls.duration}</div>
+            <div className="cell">{cls.datetime}</div>
           </div>
         ))}
       </div>

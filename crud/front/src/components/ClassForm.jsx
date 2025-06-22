@@ -1,43 +1,38 @@
-import { useState } from 'react';
-
 function ClassForm({ onAdd }) {
-  const [modality, setModality] = useState('');
-  const [instructor, setInstructor] = useState('');
-  const [duration, setDuration] = useState('');
+  const [id_modalities, setIdModalities] = useState('');
+  const [id_instructor, setIdInstructor] = useState('');
+  const [dt_hour_class, setDtHourClass] = useState('');
 
   const handleSubmit = () => {
-    if (modality && instructor && duration) {
-      onAdd({ modality, instructor, duration });
-      setModality('');
-      setInstructor('');
-      setDuration('');
+    if (id_modalities && id_instructor && dt_hour_class) {
+      onAdd({ id_modalities, id_instructor, dt_hour_class });
+      setIdModalities('');
+      setIdInstructor('');
+      setDtHourClass('');
     }
   };
 
   return (
     <div className="form-box">
       <input
-        type="text"
-        placeholder="Digite a modalidade"
-        value={modality}
-        onChange={(e) => setModality(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Digite o instrutor"
-        value={instructor}
-        onChange={(e) => setInstructor(e.target.value)}
+        type="number"
+        placeholder="ID da modalidade"
+        value={id_modalities}
+        onChange={(e) => setIdModalities(e.target.value)}
       />
       <input
         type="number"
-        min="1"                         
-        placeholder="Digite as horas"
-        value={duration}
-        onChange={(e) => setDuration(e.target.value)}
+        placeholder="ID do instrutor"
+        value={id_instructor}
+        onChange={(e) => setIdInstructor(e.target.value)}
+      />
+      <input
+        type="datetime-local"
+        placeholder="Data e Hora da Aula"
+        value={dt_hour_class}
+        onChange={(e) => setDtHourClass(e.target.value)}
       />
       <button onClick={handleSubmit}>Cadastrar</button>
     </div>
   );
 }
-
-export default ClassForm;
