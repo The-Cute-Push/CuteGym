@@ -40,7 +40,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 O relatório final está disponível no arquivo [relatorio-final/template1.docx](relatorio/template1.docx).
 
 ### Apresentação
-A apresentação está disponivel no seguinte link: [canva.com](https://www.canva.com/design/DAGrNDLcJwk/Lj7Nwj9W3k3LBs69rHX6hg/edit?utm_content=DAGrNDLcJwk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
+A apresentação está disponível no seguinte link: [canva.com](https://www.canva.com/design/DAGrNDLcJwk/Lj7Nwj9W3k3LBs69rHX6hg/edit?utm_content=DAGrNDLcJwk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
 
 ### Referências
 https://www.w3schools.com/sql/sql_datatypes.asp
