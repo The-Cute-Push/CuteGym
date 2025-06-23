@@ -39,6 +39,9 @@ Abaixo, segue os scripts SQL separados por tipo:
 ### Relatório Final
 O relatório final está disponível no arquivo [relatorio-final/template1.docx](relatorio/template1.docx).
 
+### Apresentação
+A apresentação está disponivel no seguinte link: [canva.com](https://www.canva.com/design/DAGrNDLcJwk/Lj7Nwj9W3k3LBs69rHX6hg/edit?utm_content=DAGrNDLcJwk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
+
 ### Referências
 https://www.w3schools.com/sql/sql_datatypes.asp
 https://learn.microsoft.com/pt-br/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver17
