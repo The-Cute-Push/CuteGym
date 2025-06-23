@@ -30,8 +30,3 @@ BEGIN
     DROP TABLE #ChurnRates;
 END;
 GO
-
-
-
--- execução da stored procedure
-EXEC pr_top_bottom_churn @ano = 2023, @mes = 3;
