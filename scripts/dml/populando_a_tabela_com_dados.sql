@@ -37,7 +37,7 @@ VALUES
 ('Technician', 'Maintains gym equipment'),
 ('Marketing', 'Handles promotional tasks');
 
-INSERT INTO [users] ([nm_user], [email], [password_hash], [active], [dt_creation], [dt_birth], [specialty], [phone], [id_address], [id_user_type])
+INSERT INTO [users] ([nm_user], [email], [password_hash], [active], [dt_creation], [dt_birth], [specialty], [id_phone], [id_address], [id_user_type])
 VALUES 
 ('John Doe', 'john.doe@example.com', 'hash1', 1, '2023-01-01', '1990-01-01', 'Yoga', 1, 1, 2),
 ('Jane Smith', 'jane.smith@example.com', 'hash2', 1, '2023-01-02', '1985-02-02', 'Pilates', 2, 2, 2),
@@ -103,18 +103,18 @@ VALUES
 (9, 9),
 (10, 10);
 
-INSERT INTO [subscriptions] ([id_plan], [id_user], [active], [dt_start])
+INSERT INTO [subscriptions] ([id_plan], [id_user], [active], [dt_start], [dt_end])
 VALUES 
-(1, 1, 1, '2023-01-01'),
-(2, 2, 1, '2023-01-02'),
-(3, 3, 1, '2023-01-03'),
-(4, 4, 1, '2023-01-04'),
-(5, 5, 1, '2023-01-05'),
-(6, 6, 1, '2023-01-06'),
-(7, 7, 1, '2023-01-07'),
-(8, 8, 1, '2023-01-08'),
-(9, 9, 1, '2023-01-09'),
-(10, 10, 1, '2023-01-10');
+(1, 1, 1, '2023-01-01', NULL),
+(2, 2, 1, '2023-01-02', NULL),
+(3, 3, 1, '2023-01-03', '2025-03-15'),
+(4, 4, 1, '2023-01-04', NULL),
+(5, 5, 1, '2023-01-05', '2025-03-15'),
+(6, 6, 1, '2023-01-06', NULL),
+(7, 7, 1, '2023-01-07', '2024-04-05'),
+(8, 8, 1, '2023-01-08', NULL),
+(9, 9, 1, '2023-01-09', '2023-05-01'),
+(10, 10, 1, '2023-01-10', NULL);
 
 INSERT INTO [payment_method] ([name_method])
 VALUES 
