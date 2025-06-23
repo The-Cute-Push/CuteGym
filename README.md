@@ -15,7 +15,7 @@ Vinícius dos Santos Nascimento - ViniciusDSN<br>
 Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.io/) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.<br>
 <!--Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/68477a47579a5a75f79526ab).<br> -->
 
-![image]()
+![image](modelo_fisico/modelo-fisico.png)
   
 ### Dicionário de Dados
 As informações sobre as tabelas e índices foram documentados na planilha [dicionario_de_dados_cutegym.xlsx](dicionario_dados/dicionario_de_dados_cutegym.xlsx)
