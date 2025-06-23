@@ -41,3 +41,4 @@ O relatório final está disponível no arquivo [relatorio-final/template1.docx]
 
 ### Referências
 https://www.w3schools.com/sql/sql_datatypes.asp
+https://learn.microsoft.com/pt-br/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver17
