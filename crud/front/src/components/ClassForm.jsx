@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 const API_URL = 'http://localhost:3002';
 
 function ClassForm({ onAdd }) {
-  const [id_modalities, setIdModalities] = useState(null);
-  const [id_instructor, setIdInstructor] = useState(null);
+  const [id_modalities, setIdModalities] = useState('');
+  const [id_instructor, setIdInstructor] = useState('');
   const [dt_hour_class, setDtHourClass] = useState('');
 
   const [modalities, setModalities] = useState([]);

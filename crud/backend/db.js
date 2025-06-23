@@ -1,7 +1,7 @@
 const sql = require('mssql/msnodesqlv8');
 
 const config = {
-  server: 'WIN-GG66KL1BPKP\\SQL2017',
+  server: '',
   database: 'BD_teste',
   driver: 'msnodesqlv8',
   options: {

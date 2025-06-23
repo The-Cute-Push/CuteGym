@@ -67,9 +67,46 @@ async function getAllInstructors(req, res) {
   }
 }
 
+async function updateClass(req, res) {
+  const { id } = req.params;
+  const { id_modalities, id_instructor, dt_hour_class } = req.body;
+
+  const jsDate = new Date(dt_hour_class);
+  const pad = (n) => n.toString().padStart(2, '0');
+  const formattedDate = 
+    `${jsDate.getFullYear()}${pad(jsDate.getMonth() + 1)}${pad(jsDate.getDate())} ` +
+    `${pad(jsDate.getHours())}:${pad(jsDate.getMinutes())}:${pad(jsDate.getSeconds())}`;
+
+  try {
+    await sql.query`
+      UPDATE classes
+      SET id_modalities = ${id_modalities},
+          id_instructor = ${id_instructor},
+          dt_hour_class = ${formattedDate}
+      WHERE id_class = ${id}
+    `;
+    res.status(200).send('Aula atualizada com sucesso!');
+  } catch (err) {
+    res.status(500).send('Erro ao atualizar aula: ' + err.message);
+  }
+}
+
+// Deletar aula
+async function deleteClass(req, res) {
+  const { id } = req.params;
+  try {
+    await sql.query`DELETE FROM classes WHERE id_class = ${id}`;
+    res.status(200).send('Aula excluída com sucesso!');
+  } catch (err) {
+    res.status(500).send('Erro ao excluir aula: ' + err.message);
+  }
+}
+
 module.exports = {
   getAllClasses,
   createClass,
   getAllModalities,
-  getAllInstructors
+  getAllInstructors,
+  updateClass,
+  deleteClass,
 };
