@@ -13,7 +13,6 @@ BEGIN
     JOIN payments PA ON S.id_subscriptions = PA.id_subscriptions
     WHERE P.[name] = @Plano
       AND YEAR(S.dt_start) = @Ano
-      AND S.active = 1;
 
     RETURN @ReceitaTotal;
 END;
