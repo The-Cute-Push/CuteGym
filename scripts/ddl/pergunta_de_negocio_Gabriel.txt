@@ -1,0 +1,5 @@
+Qual a taxa de cancelamento (churn rate) mensal para cada tipo de plano e quais são os 3 planos com as maiores e menores taxas?
+Para responder essa questão, foram criadas:
+    - A função fn_churn_rate_mensal
+    - A stored procedure pr_top_bottom_churn
+A resposta em si depende da execução do procedimento, informando mês e ano que se quer analisar o churn rate
